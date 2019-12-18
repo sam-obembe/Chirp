@@ -11,6 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { FirebaseConfigService } from './Services/firebase/firebase-config.service';
+import { AuthenticationService } from './Services/AuthService/authentication.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [FirebaseConfigService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

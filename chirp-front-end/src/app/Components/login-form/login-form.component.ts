@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/Services/AuthService/authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +10,7 @@ export class LoginFormComponent implements OnInit {
 
   email:string;
   password:string;
-  constructor() { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginClick(){
-    alert(`${this.email} ${this.password}`);
+    //alert(`${this.email} ${this.password}`);
+    this.authService.login(this.email,this.password);
   }
 
 }

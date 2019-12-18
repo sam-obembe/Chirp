@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
+import { FirebaseConfigService } from './Services/firebase/firebase-config.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chirp-front-end';
+  constructor(private firebaseService:FirebaseConfigService){
+    console.log(this.firebaseService.getConfig());
+  }
+
+  ngOnInit(){
+  }
 }
