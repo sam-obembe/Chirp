@@ -9,17 +9,21 @@ import { LoginFormComponent } from './Components/login-form/login-form.component
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule

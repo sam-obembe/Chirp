@@ -1,0 +1,27 @@
+<div>
+
+<h1 style="margin:auto auto; background-color: red;">Signup</h1>
+<form [formGroup]="signupForm" class="signupForm" (ngSubmit)="handleSubmit()"> 
+    
+    <mat-form-field appearance="outline">
+        <input matInput type="email" formControlName="email" placeholder="Email" required/>
+        <mat-hint>Required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput type="text" formControlName="userName" placeholder="User Name" required/>
+        <mat-hint>Required.Must be between 4 and 15 characters long</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput type="password" formControlName="password" placeholder="Password" required/>
+        <mat-hint>Required.Must be between 7 and 15 characters long</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" required/>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Signup</button>
+</form>
+</div>
