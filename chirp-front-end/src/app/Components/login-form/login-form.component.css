@@ -1,0 +1,10 @@
+.miniForm{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+
+.miniLoginButton{
+  height:60px;
+}

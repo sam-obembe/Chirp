@@ -1,0 +1,10 @@
+<div class="miniForm">
+  <mat-form-field appearance="outline">
+    <input matInput #email (keyup)="onInput(email.value,'email')"placeholder="Username">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <input matInput #password (keyup) ="onInput(password.value,'password')"placeholder="password">
+  </mat-form-field>
+  <button (click)="loginClick()" mat-raised-button color="primary" class="miniLoginButton">Log In</button>
+</div>
