@@ -14,7 +14,7 @@ public class MongoConfig {
     private String username=""; //insert username
     private String password="";  //insert password here
 
-    MongoClientURI uri = new MongoClientURI("mongodb://"+username+":"+password+"@chirpcluster-shard-00-00-zvdoa.mongodb.net:27017,chirpcluster-shard-00-01-zvdoa.mongodb.net:27017,chirpcluster-shard-00-02-zvdoa.mongodb.net:27017/test?ssl=true&replicaSet=ChirpCluster-shard-0&authSource=admin&retryWrites=true&w=majority");
+    MongoClientURI uri = new MongoClientURI("");
 
     @Bean
     public MongoClient mongoClient(){
