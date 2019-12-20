@@ -1,6 +1,6 @@
 package com.api.chirpApi.rest;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class Test {
     public String getTest(){
         String databases = mongoClient.listDatabases().toString();
         MongoIterable collections = this.db.listCollectionNames();
-
+        mongoClient.close();
         return databases;
     }
 }

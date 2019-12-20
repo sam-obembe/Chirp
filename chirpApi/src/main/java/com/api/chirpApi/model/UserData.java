@@ -1,9 +1,11 @@
 package com.api.chirpApi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
+@Document(collection="user")
 public class UserData {
     private String userId;
     private String userName;
