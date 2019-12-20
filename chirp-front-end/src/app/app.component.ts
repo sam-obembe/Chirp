@@ -9,7 +9,7 @@ import { FirebaseConfigService } from './Services/firebase/firebase-config.servi
 export class AppComponent {
   title = 'chirp-front-end';
   constructor(private firebaseService:FirebaseConfigService){
-    console.log(this.firebaseService.getConfig());
+   
   }
 
   ngOnInit(){

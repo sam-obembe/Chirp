@@ -22,10 +22,10 @@ export class SignupPageComponent implements OnInit {
 
   handleSubmit():void{
     console.log(this.signupForm.status)
-    let passwordMatch:boolean=this.signupForm.value.password===this.signupForm.value.confirmPassword;
+    let passwordMatch:boolean = this.signupForm.value.password===this.signupForm.value.confirmPassword;
     if(this.signupForm.status!=="INVALID" && passwordMatch){
-      console.log(this.signupForm.value);
-      this.authService.signUp(this.signupForm.value.email, this.signupForm.value.password);
+      let {email,password,userName} = this.signupForm.value
+      this.authService.signUp(email, password,userName);
     }
     else if(!passwordMatch){
       alert("passwords do not match")

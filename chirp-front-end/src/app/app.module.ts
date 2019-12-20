@@ -13,7 +13,7 @@ import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { FirebaseConfigService } from './Services/firebase/firebase-config.service';
 import { AuthenticationService } from './Services/AuthService/authentication.service';
-
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import { AuthenticationService } from './Services/AuthService/authentication.ser
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule
