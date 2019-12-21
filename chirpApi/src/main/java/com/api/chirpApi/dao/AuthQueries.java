@@ -4,6 +4,7 @@ import com.api.chirpApi.model.UserData;
 import com.google.gson.Gson;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,12 +23,14 @@ public class AuthQueries {
     private MongoClient mongoClient;
     private MongoDatabase db;
     private Gson gson;
+    private MongoCollection userCollection;
 
     @Autowired
     public AuthQueries(MongoClient mongoClient){
         this.mongoClient=mongoClient;
         this.db=mongoClient.getDatabase("chirpProject");
         this.gson = new Gson();
+        this.userCollection = db.getCollection("user");
     }
 
     public boolean userExists(String userId){
@@ -51,7 +54,8 @@ public class AuthQueries {
 
         if(userFound==false){
             try {
-                db.getCollection("user").insertOne(userDocument);
+                //db.getCollection("user").insertOne(userDocument);
+                userCollection.insertOne(userDocument);
                 mongoClient.close();
                 return true;
             }
@@ -62,6 +66,23 @@ public class AuthQueries {
         else{
             mongoClient.close();
             return false;
+        }
+    }
+
+    public UserData getUser(String userId){
+        System.out.println(userId);
+        try{
+            FindIterable<Document> userResult = userCollection.find(eq("userId",userId)).projection(new Document("userId",1)
+                    .append("userName",1).append("profilePicture",1).append("followers",1).append("following",1).append("chirps",1).append("likedChirps",1)
+            );
+            Document user = userResult.first();
+            UserData userData = gson.fromJson(user.toJson(),UserData.class);
+            System.out.println(user.toJson());
+            System.out.println(userData.toJson());
+            return userData;
+        }
+        catch(Exception e){
+            throw e;
         }
 
     }

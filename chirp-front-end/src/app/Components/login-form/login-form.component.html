@@ -1,3 +1,4 @@
+<!--
 <div class="miniForm">
   <mat-form-field appearance="outline">
     <input matInput #email (keyup)="onInput(email.value,'email')"placeholder="Username">
@@ -8,3 +9,15 @@
   </mat-form-field>
   <button (click)="loginClick()" mat-raised-button color="primary" class="miniLoginButton">Log In</button>
 </div>
+-->
+
+<form [formGroup]="loginForm" (ngSubmit)="loginClick()" class="miniForm">
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="email" placeholder="email"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="password" placeholder="password"/>
+  </mat-form-field>
+  <button  mat-raised-button color="primary" class="miniLoginButton">Log In</button>
+</form>

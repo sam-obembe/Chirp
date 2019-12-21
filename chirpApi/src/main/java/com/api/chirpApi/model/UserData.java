@@ -25,6 +25,14 @@ public class UserData {
         this.likedChirps = new ArrayList();
     }
 
+    @Override
+    public String toString() {
+        return "{userId:"+getUserId()+", userName:"+getUserName()+", profilePicture:"+getProfilePicture()+", followers:"+getFollowers().toString()+", following:"+getFollowing().toString()+", chirps:"+getChirps().toString()+", likedChirps:"+getLikedChirps().toString()+", }";
+    }
+
+    public String toJson(){
+        return "{}";
+    }
     public String getUserId() {
         return userId;
     }

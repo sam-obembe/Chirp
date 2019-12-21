@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping("auth")
 public class Auth {
     AuthQueries authQuery;
@@ -17,7 +18,7 @@ public class Auth {
         this.authQuery=authQueries;
     }
 
-    @CrossOrigin(origins="http://localhost:4200")
+    //@CrossOrigin(origins="http://localhost:4200")
     @PostMapping("register")
     public ResponseEntity register(@RequestBody UserData userData){
         String userId = userData.getUserId();
@@ -33,8 +34,20 @@ public class Auth {
 
     }
 
-    @PostMapping("login")
+    /*@PostMapping("login")
     public ResponseEntity login(@RequestBody UserLogin userDetails){
         return ResponseEntity.status(200).body(userDetails);
+    }*/
+
+    @PostMapping("login")
+    public ResponseEntity login(@RequestBody UserData userData){
+        String userID = userData.getUserId();
+        UserData user = this.authQuery.getUser(userID);
+        if(user.getUserId()==userID){
+            return ResponseEntity.status(200).body(user);
+        }
+        else{
+            return ResponseEntity.status(400).body("NOT FOUND");
+        }
     }
 }

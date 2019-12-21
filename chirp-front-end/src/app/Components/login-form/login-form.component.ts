@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/Services/AuthService/authentication.service';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { LoginDetails } from 'src/app/Models/login-details';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login-form',
@@ -8,26 +10,22 @@ import { AuthenticationService } from 'src/app/Services/AuthService/authenticati
 })
 export class LoginFormComponent implements OnInit {
 
-  email:string;
-  password:string;
-  constructor(private authService:AuthenticationService) { }
+  @Output() loginCredentials = new EventEmitter<LoginDetails>();
+  loginForm = new FormGroup({
+    email:new FormControl('',Validators.required),
+    password:new FormControl('',Validators.required)
+  })
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onInput(e:string,inputType:string){
-    console.log(e);
-   if(inputType==="email"){
-     this.email=e;
-   }
-   else if(inputType==="password"){
-     this.password=e;
-   }
-  }
-
   loginClick(){
-    //alert(`${this.email} ${this.password}`);
-    this.authService.login(this.email,this.password);
+    if(this.loginForm.status!=="INVALID"){
+      let {email,password}= this.loginForm.value;
+      this.loginCredentials.emit({email,password});
+      this.loginForm.reset();
+    }
   }
 
 }

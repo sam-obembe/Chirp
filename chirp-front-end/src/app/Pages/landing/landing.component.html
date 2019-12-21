@@ -11,7 +11,7 @@
 
   <div class="banner">
     <div class="bannerContent">
-      <app-login-form></app-login-form>
+      <app-login-form (loginCredentials)="onLogin($event)"></app-login-form>
       <h1>See what's happening right now</h1>
       <h2>Join Chirp today</h2>
       <div class="wideButtonGroup">
