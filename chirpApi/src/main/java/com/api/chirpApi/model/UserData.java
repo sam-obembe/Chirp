@@ -1,13 +1,17 @@
 package com.api.chirpApi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
 @Document(collection="user")
 public class UserData {
+
+    @Id
     private String userId;
+
     private String userName;
     private String profilePicture;
     private ArrayList followers;

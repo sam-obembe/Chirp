@@ -1,0 +1,13 @@
+<p>chirp-box works!</p>
+<div>
+  <mat-form-field appearance="outline" class="chirpBox">
+    <textarea matInput placeholder="What's happening" [formControl]="chirpBox"></textarea>
+  </mat-form-field>
+  
+  <div *ngIf="chirpBox.status==='INVALID'">
+    <button mat-raised-button color="primary" (click)="postChirp()" disabled >Chirp</button>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="postChirp()" *ngIf="chirpBox.status==='VALID'">Chirp</button>
+
+</div>

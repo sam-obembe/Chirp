@@ -43,7 +43,8 @@ public class Auth {
     public ResponseEntity login(@RequestBody UserData userData){
         String userID = userData.getUserId();
         UserData user = this.authQuery.getUser(userID);
-        if(user.getUserId()==userID){
+        System.out.println(user.toString());
+        if(user.getUserId().equals(userID)){
             return ResponseEntity.status(200).body(user);
         }
         else{

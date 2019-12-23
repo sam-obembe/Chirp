@@ -14,12 +14,20 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { FirebaseConfigService } from './Services/firebase/firebase-config.service';
 import { AuthenticationService } from './Services/AuthService/authentication.service';
 import {HttpClientModule} from '@angular/common/http';
+import { HomePageComponent } from './Pages/home-page/home-page.component';
+import { SideNavComponent } from './Components/side-nav/side-nav.component';
+import { ChirpBoxComponent } from './Components/chirp-box/chirp-box.component';
+import { ChirpFeedComponent } from './Components/chirp-feed/chirp-feed.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     LoginFormComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    HomePageComponent,
+    SideNavComponent,
+    ChirpBoxComponent,
+    ChirpFeedComponent
   ],
   imports: [
     BrowserModule,

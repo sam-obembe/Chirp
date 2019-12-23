@@ -19,7 +19,10 @@ export class AuthenticationService {
     this.firebase.auth().createUserWithEmailAndPassword(email,password)
     .then(credential=>{
       let uid = credential.user.uid;
-      this.http.post(`${this.domain}/auth/register`,{userId:uid,userName}).subscribe(res=>console.log(res))
+      this.http.post(`${this.domain}/auth/register`,{userId:uid,userName}).subscribe(res=>{
+        console.log(res)
+        this.userData=res;
+      })
     })
     .catch(err=>console.log(err))
   }
@@ -32,9 +35,24 @@ export class AuthenticationService {
       return this.http.post(`${this.domain}/auth/login`,{userId:uid}).subscribe(data=>{
         this.userData = data;
         console.log(this.userData);
+        console.log(this.firebase.auth().currentUser);
       })
     })
     .catch(err=>console.log(err))
-    
+  }
+
+  getUserData(){
+    return this.userData;
+  }
+
+  checkLoggedIn():boolean{
+    return this.firebase.auth().onAuthStateChanged(user=>{
+      if(user){
+        return true
+      }
+      else{
+        return false
+      }
+    })
   }
 }

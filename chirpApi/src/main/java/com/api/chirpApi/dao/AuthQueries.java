@@ -8,6 +8,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.bson.Document;
 import com.mongodb.client.model.Filters;
@@ -21,35 +23,50 @@ import static com.mongodb.client.model.Filters.*;
 public class AuthQueries {
 
     private MongoClient mongoClient;
+    private MongoOperations mongoOps;
     private MongoDatabase db;
     private Gson gson;
     private MongoCollection userCollection;
 
     @Autowired
-    public AuthQueries(MongoClient mongoClient){
+    public AuthQueries(MongoClient mongoClient, MongoOperations mongoOps){
         this.mongoClient=mongoClient;
+        this.mongoOps=mongoOps;
         this.db=mongoClient.getDatabase("chirpProject");
         this.gson = new Gson();
         this.userCollection = db.getCollection("user");
     }
 
     public boolean userExists(String userId){
-        FindIterable<Document> queryResult = db.getCollection("user").find(eq("userId",userId));
-        List results = new ArrayList();
-        for(Document res:queryResult){
-            results.add(res);
-        }
-        if(results.size()>0){
+
+        UserData user = mongoOps.findById(userId,UserData.class);
+        if(user.getUserId().length()>0){
             return true;
         }
-        else{
+        else {
             return false;
         }
-
     }
 
     public boolean addUser(UserData user){
-        Document userDocument = Document.parse(gson.toJson(user));
+        System.out.println(user.toString());
+        mongoOps.insert(user);
+        return true;
+
+    }
+
+    public UserData getUser(String userId){
+        System.out.println(userId);
+        UserData foundUser;
+
+        foundUser = mongoOps.findById(userId,UserData.class);
+        return foundUser;
+
+    }
+}
+
+
+        /*Document userDocument = Document.parse(gson.toJson(user));
         boolean userFound = this.userExists(user.getUserId());
 
         if(userFound==false){
@@ -66,12 +83,10 @@ public class AuthQueries {
         else{
             mongoClient.close();
             return false;
-        }
-    }
+        }*/
 
-    public UserData getUser(String userId){
-        System.out.println(userId);
-        try{
+
+        /*try{
             FindIterable<Document> userResult = userCollection.find(eq("userId",userId)).projection(new Document("userId",1)
                     .append("userName",1).append("profilePicture",1).append("followers",1).append("following",1).append("chirps",1).append("likedChirps",1)
             );
@@ -83,7 +98,18 @@ public class AuthQueries {
         }
         catch(Exception e){
             throw e;
-        }
+        }*/
 
-    }
-}
+//FindIterable<Document> queryResult = db.getCollection("user").find(eq("userId",userId));
+  /*
+        List results = new ArrayList();
+        for(Document res:queryResult){
+            results.add(res);
+        }
+        if(results.size()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+ */
