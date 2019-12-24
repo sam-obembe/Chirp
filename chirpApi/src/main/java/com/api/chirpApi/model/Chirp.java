@@ -1,23 +1,28 @@
 package com.api.chirpApi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
-
+@Document(collection="chirps")
 public class Chirp {
-    private UUID chirpId;
+
+    @Id
+    private String chirpId;
     private String userId;
     private String chirp;
     private LocalDateTime timeStamp;
-    private String[] imgUrls;
+    private ArrayList imgUrls;
     private ArrayList likers;
     private ArrayList replies;
     private String replyingTo;
 
     public Chirp(@JsonProperty("userId") String userId, @JsonProperty("chirp") String chirp,
-                 @JsonProperty("imgUrls") String[] imgUrls, @JsonProperty("replying") String replyingTo){
+                 @JsonProperty("imgUrls") ArrayList imgUrls, @JsonProperty("replying") String replyingTo){
         this.replies = new ArrayList();
         this.likers = new ArrayList();
         this.userId = userId;
@@ -25,8 +30,8 @@ public class Chirp {
         this.replyingTo = replyingTo;
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         this.timeStamp = LocalDateTime.now();
-        this.chirpId = UUID.randomUUID();
-        if(imgUrls.length>0 && imgUrls.length<5){
+        this.chirpId = UUID.randomUUID().toString();
+        if(imgUrls.size()>0 && imgUrls.size()<5){
             this.imgUrls=imgUrls;
         }
         else{
@@ -34,7 +39,7 @@ public class Chirp {
         }
     }
 
-    public UUID getChirpId() {
+    public String getChirpId() {
         return chirpId;
     }
 
@@ -50,7 +55,7 @@ public class Chirp {
         return timeStamp;
     }
 
-    public String[] getImgUrls() {
+    public ArrayList getImgUrls() {
         return imgUrls;
     }
 

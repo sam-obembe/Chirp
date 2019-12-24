@@ -18,7 +18,6 @@ public class Auth {
         this.authQuery=authQueries;
     }
 
-    //@CrossOrigin(origins="http://localhost:4200")
     @PostMapping("register")
     public ResponseEntity register(@RequestBody UserData userData){
         String userId = userData.getUserId();
@@ -33,11 +32,6 @@ public class Auth {
         }
 
     }
-
-    /*@PostMapping("login")
-    public ResponseEntity login(@RequestBody UserLogin userDetails){
-        return ResponseEntity.status(200).body(userDetails);
-    }*/
 
     @PostMapping("login")
     public ResponseEntity login(@RequestBody UserData userData){
