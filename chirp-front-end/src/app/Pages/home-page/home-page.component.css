@@ -2,4 +2,17 @@
   display:grid;
   grid-template-columns: repeat(3,1fr);
   column-gap: 5px;
+  border: 1px solid red;
+}
+
+
+.chirpBoxTopLabel{
+  font-weight: bold;
+  font-size: larger;
+  border-bottom: 1px solid grey;
+}
+
+.chirpSection{
+  border-left:1px solid grey;
+  border-right: 1px solid grey;
 }

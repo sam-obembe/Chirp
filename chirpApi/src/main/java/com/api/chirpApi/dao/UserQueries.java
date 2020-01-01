@@ -6,6 +6,12 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
+
+
 
 @Service
 public class UserQueries {
@@ -36,5 +42,11 @@ public class UserQueries {
             followerDetails.add(foundFollower);
         });
         return followerDetails;
+    }
+
+    public List getUsersByUsername(String username){
+
+        List result = mongoOp.find(query(where("userName").is(username)),UserData.class);
+        return result;
     }
 }

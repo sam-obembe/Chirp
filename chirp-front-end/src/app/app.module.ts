@@ -20,6 +20,7 @@ import { ChirpBoxComponent } from './Components/chirp-box/chirp-box.component';
 import { ChirpFeedComponent } from './Components/chirp-feed/chirp-feed.component';
 import { MyhttpService } from './Services/MyHttpService/myhttp.service';
 import { AuthGuard } from './Guards/auth.guard';
+import { SearchboxComponent } from './Components/searchbox/searchbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { AuthGuard } from './Guards/auth.guard';
     HomePageComponent,
     SideNavComponent,
     ChirpBoxComponent,
-    ChirpFeedComponent
+    ChirpFeedComponent,
+    SearchboxComponent
   ],
   imports: [
     BrowserModule,
