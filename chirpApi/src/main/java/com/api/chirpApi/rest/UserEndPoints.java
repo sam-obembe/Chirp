@@ -36,7 +36,7 @@ public class UserEndPoints {
         return ResponseEntity.status(200).body(followers);
     }
 
-    @GetMapping("{userID}")
+    @GetMapping("{userID}/following")
     public void getFollowing(@PathVariable("userID") String userId){
 
     }
