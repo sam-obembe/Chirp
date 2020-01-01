@@ -42,12 +42,12 @@ public class UserEndPoints {
     }
 
 
-    @PostMapping("{userID}/{otherUser}")
+    @PostMapping("{userID}/{otherUser}/follow")
     public void followOtherUser(@PathVariable("userID") String userId,@PathVariable("otherUser") String otherUser){
 
     }
 
-    @PostMapping("{userID}/{otherUser}")
+    @PostMapping("{userID}/{otherUser}/unfollow")
     public void unfollowOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
 
     }
