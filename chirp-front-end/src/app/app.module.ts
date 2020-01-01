@@ -18,6 +18,8 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { SideNavComponent } from './Components/side-nav/side-nav.component';
 import { ChirpBoxComponent } from './Components/chirp-box/chirp-box.component';
 import { ChirpFeedComponent } from './Components/chirp-feed/chirp-feed.component';
+import { MyhttpService } from './Services/MyHttpService/myhttp.service';
+import { AuthGuard } from './Guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ import { ChirpFeedComponent } from './Components/chirp-feed/chirp-feed.component
     MatFormFieldModule,
     MatButtonModule
   ],
-  providers: [FirebaseConfigService,AuthenticationService],
+  providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

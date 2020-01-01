@@ -36,18 +36,18 @@ public class UserEndPoints {
         return ResponseEntity.status(200).body(followers);
     }
 
-    @GetMapping("{userID}")
+    @GetMapping("{userID}/following")
     public void getFollowing(@PathVariable("userID") String userId){
 
     }
 
 
-    @PostMapping("{userID}/{otherUser}")
+    @PostMapping("{userID}/{otherUser}/follow")
     public void followOtherUser(@PathVariable("userID") String userId,@PathVariable("otherUser") String otherUser){
 
     }
 
-    @PostMapping("{userID}/{otherUser}")
+    @PostMapping("{userID}/{otherUser}/unfollow")
     public void unfollowOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
 
     }
