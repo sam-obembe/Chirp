@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginDetails } from 'src/app/Models/login-details';
 import { AuthenticationService } from 'src/app/Services/AuthService/authentication.service';
 import { MyhttpService } from 'src/app/Services/MyHttpService/myhttp.service';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -12,8 +12,7 @@ export class LandingComponent implements OnInit {
 
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService,private router:Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onLogin(credentials:LoginDetails){
     console.log(credentials)

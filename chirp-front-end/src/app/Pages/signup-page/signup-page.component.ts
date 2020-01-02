@@ -24,12 +24,9 @@ export class SignupPageComponent implements OnInit {
     confirmPassword: new FormControl('',[Validators.required,Validators.minLength(7),Validators.maxLength(15)])
   })
 
-  constructor(private authService:AuthenticationService,private myHttp: MyhttpService,private router:Router) { 
- 
-  }
+  constructor(private authService:AuthenticationService,private myHttp: MyhttpService,private router:Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   handleSubmit(){
     console.log(this.signupForm.status)

@@ -46,7 +46,8 @@ public class UserQueries {
 
     public List getUsersByUsername(String username){
 
-        List result = mongoOp.find(query(where("userName").is(username)),UserData.class);
+        //List result = mongoOp.find(query(where("userName").is(username)),UserData.class);
+        List result = mongoOp.find(query(where("userName").regex(username)),UserData.class);
         return result;
     }
 }

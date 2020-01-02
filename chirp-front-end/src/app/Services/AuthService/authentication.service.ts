@@ -50,38 +50,4 @@ export class AuthenticationService {
     return this.isAuthenticated;
   }
 
-
 }
-
-
-
-    /*return this.firebase.auth().createUserWithEmailAndPassword(email,password)
-    .then(credential=>{
-      let uid = credential.user.uid;
-      this.http.post(`${this.domain}/auth/register`,{userId:uid,userName}).subscribe(res=>{
-        console.log(res)
-        this.userData=res;
-        return true;
-      })
-    })
-    .catch(err=>{
-      console.log(err)
-      return false;
-    })*/
-
-
-
-
-        /*.then(credential=>{
-      uid= credential.user.uid;
-      this.http.post(`${this.domain}/auth/login`,{userId:uid}).subscribe(data=>{
-        this.userData = data;
-        console.log(this.userData);
-        console.log(this.firebase.auth().currentUser);
-        return success;
-      })
-    })
-    .catch(err=>{
-      console.log(err)
-      return false;
-    })*/
