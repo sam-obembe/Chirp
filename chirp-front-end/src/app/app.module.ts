@@ -21,6 +21,7 @@ import { ChirpFeedComponent } from './Components/chirp-feed/chirp-feed.component
 import { MyhttpService } from './Services/MyHttpService/myhttp.service';
 import { AuthGuard } from './Guards/auth.guard';
 import { SearchboxComponent } from './Components/searchbox/searchbox.component';
+import { InteractionsService } from './Services/InteractionsService/interactions.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import { SearchboxComponent } from './Components/searchbox/searchbox.component';
     MatFormFieldModule,
     MatButtonModule
   ],
-  providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard],
+  providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard,InteractionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

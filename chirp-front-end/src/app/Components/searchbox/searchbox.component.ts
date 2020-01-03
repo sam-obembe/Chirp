@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms'
+import { MyhttpService } from 'src/app/Services/MyHttpService/myhttp.service';
+import { InteractionsService } from 'src/app/Services/InteractionsService/interactions.service';
 @Component({
   selector: 'app-searchbox',
   templateUrl: './searchbox.component.html',
@@ -7,7 +9,7 @@ import {FormControl} from '@angular/forms'
 })
 export class SearchboxComponent implements OnInit {
   searchInput = new FormControl('');
-  constructor() { }
+  constructor(private myHttp:MyhttpService,private interaction:InteractionsService) { }
 
   ngOnInit() {
   }
@@ -15,7 +17,12 @@ export class SearchboxComponent implements OnInit {
 
   onEnter(event){
     if(event.keyCode===13){
-      console.log(this.searchInput.value)
+      //console.log(this.searchInput.value)
+      this.myHttp.search(this.searchInput.value).subscribe((data)=>{
+        console.log(data);
+        this.searchInput.reset('');
+        this.interaction.setSearchResults(data);
+      })
     }
     
   }

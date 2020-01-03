@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms'
+import { InteractionsService } from 'src/app/Services/InteractionsService/interactions.service';
 
 @Component({
   selector: 'app-chirp-box',
@@ -8,14 +9,14 @@ import {FormControl, Validators} from '@angular/forms'
 })
 export class ChirpBoxComponent implements OnInit {
   chirpBox = new FormControl('',[Validators.required,Validators.maxLength(200)])
-  constructor() { }
+  constructor(private interactions:InteractionsService) { }
 
   ngOnInit() {
   }
 
   postChirp(){
     console.log(this.chirpBox.value);
-    console.log(this.chirpBox);
+    this.interactions.postChirp(this.chirpBox.value);
     this.chirpBox.reset('');
     
   }

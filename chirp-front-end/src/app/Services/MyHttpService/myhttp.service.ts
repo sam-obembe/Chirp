@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Chirp } from 'src/app/Models/chirp';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,13 @@ export class MyhttpService {
 
   loginUser(userId:string){
     return this.http.post(`${this.domain}/auth/login`,{userId:userId});
+  }
+
+  search(searchString:string){
+    return this.http.get(`${this.domain}/search/${searchString}`);
+  }
+
+  postChirp(chirp:Chirp){
+    return this.http.post(`${this.domain}/chirp`,chirp)
   }
 }
