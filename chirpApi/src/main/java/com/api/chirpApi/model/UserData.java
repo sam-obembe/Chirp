@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Document(collection="user")
 public class UserData {
@@ -14,7 +15,7 @@ public class UserData {
 
     private String userName;
     private String profilePicture;
-    private ArrayList followers;
+    private List followers;
     private ArrayList following;
     private ArrayList chirps;
     private ArrayList likedChirps;
@@ -45,7 +46,7 @@ public class UserData {
         return userName;
     }
 
-    public ArrayList getFollowers() {
+    public List getFollowers() {
         return followers;
     }
 

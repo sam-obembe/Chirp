@@ -28,4 +28,5 @@ export class InteractionsService {
     console.log(post);
     this.myHttp.postChirp(post).subscribe(data=>console.log(data))
   }
+
 }
