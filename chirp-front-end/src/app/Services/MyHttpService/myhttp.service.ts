@@ -31,4 +31,8 @@ export class MyhttpService {
   getChirpsForFeed(userId:string){
     return this.http.get(`${this.domain}/chirp/${userId}/chirps/following`)
   }
+
+  getChirpsByUser(userId:string){
+    return this.http.get(`${this.domain}/chirp/${userId}/chirps`)
+  }
 }

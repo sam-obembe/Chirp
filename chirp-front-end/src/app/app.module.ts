@@ -22,6 +22,12 @@ import { MyhttpService } from './Services/MyHttpService/myhttp.service';
 import { AuthGuard } from './Guards/auth.guard';
 import { SearchboxComponent } from './Components/searchbox/searchbox.component';
 import { InteractionsService } from './Services/InteractionsService/interactions.service';
+import { ChirpTileComponent } from './Components/chirp-tile/chirp-tile.component';
+import {MatCardModule} from '@angular/material/card'
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { SearchPageComponent } from './Pages/search-page/search-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +38,10 @@ import { InteractionsService } from './Services/InteractionsService/interactions
     SideNavComponent,
     ChirpBoxComponent,
     ChirpFeedComponent,
-    SearchboxComponent
+    SearchboxComponent,
+    ChirpTileComponent,
+    ProfilePageComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +51,10 @@ import { InteractionsService } from './Services/InteractionsService/interactions
     HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard,InteractionsService],
   bootstrap: [AppComponent]

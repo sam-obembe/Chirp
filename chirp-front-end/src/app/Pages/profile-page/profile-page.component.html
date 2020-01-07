@@ -1,0 +1,10 @@
+<div class="profilePageMain">
+    <app-side-nav (signout)="signOut($event)"></app-side-nav>
+
+    <div class="chirpSection">
+        <div>
+            <p class="chirpBoxTopLabel">{{userData.userName}}</p>
+        </div>
+        <app-chirp-feed [chirps]="userChirps"></app-chirp-feed>
+    </div>
+</div>

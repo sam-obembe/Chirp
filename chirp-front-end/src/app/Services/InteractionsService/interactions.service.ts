@@ -11,7 +11,9 @@ import { MyhttpService } from '../MyHttpService/myhttp.service';
 export class InteractionsService {
 
   private searchResults = new Subject<[]>();
+  private chirpFeed = new Subject<Chirp[]>();
   private searchResultsObservable = this.searchResults.asObservable() ;
+  private chirpFeedObservable = this.chirpFeed.asObservable();
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService) { }
 
   getSearchResults():Observable<[]> {
@@ -27,6 +29,14 @@ export class InteractionsService {
     let post:Chirp = {userId:uid,chirp, replying:"",imgUrls:[""]}
     console.log(post);
     this.myHttp.postChirp(post).subscribe(data=>console.log(data))
+  }
+
+  getFeed():Observable<any>{
+    return this.chirpFeedObservable
+  }
+
+  setFeed(chirps: Chirp[]){
+    this.chirpFeed.next(chirps);
   }
 
 }
