@@ -50,4 +50,25 @@ public class UserQueries {
         List result = mongoOp.find(query(where("userName").regex(username)),UserData.class);
         return result;
     }
+
+    public List getFollowersOrFollowing(String id, String followersOrFollowing){
+        UserData user = this.getUserById(id);
+        List people;
+        if(followersOrFollowing.equals("followers")){
+            people = user.getFollowers();
+            return people;
+        }else if(followersOrFollowing.equals("following")){
+            people = user.getFollowing();
+            return people;
+        }
+        people = new ArrayList();
+        return people;
+    }
+
+    /*
+    public List getFollowing(String id){
+        UserData user = this.getUserById(id);
+        List following = user.getFollowing();
+    }
+     */
 }

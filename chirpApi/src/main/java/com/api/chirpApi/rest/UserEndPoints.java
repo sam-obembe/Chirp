@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -32,13 +33,15 @@ public class UserEndPoints {
 
     @GetMapping("{userID}/followers")
     public ResponseEntity getFollowers(@PathVariable("userID") String userId){
-        ArrayList followers = this.userQueries.getFollowers(userId);
+        //ArrayList followers = this.userQueries.getFollowers(userId);
+        List followers = this.userQueries.getFollowersOrFollowing(userId,"followers");
         return ResponseEntity.status(200).body(followers);
     }
 
     @GetMapping("{userID}/following")
-    public void getFollowing(@PathVariable("userID") String userId){
-
+    public ResponseEntity getFollowing(@PathVariable("userID") String userId){
+        List following = this.userQueries.getFollowersOrFollowing(userId,"following");
+        return ResponseEntity.status(200).body(following);
     }
 
 
