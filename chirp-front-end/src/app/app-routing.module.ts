@@ -4,11 +4,15 @@ import { LandingComponent } from './Pages/landing/landing.component';
 import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import {AuthGuard} from './Guards/auth.guard';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { SearchPageComponent } from './Pages/search-page/search-page.component';
 
 const routes: Routes = [
   {path:'', component:LandingComponent},
   {path:'signup',component:SignupPageComponent},
-  {path:'home',component:HomePageComponent}
+  {path:'home',component:HomePageComponent},
+  {path:'profile',component:ProfilePageComponent},
+  {path:'search',component:SearchPageComponent}
   /*{path:'home',component:HomePageComponent,canActivate:[AuthGuard]}*/
 ];
 

@@ -1,5 +1,6 @@
 package com.api.chirpApi.rest;
 
+import com.api.chirpApi.dao.ChirpQueries;
 import com.api.chirpApi.dao.UserQueries;
 import com.api.chirpApi.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserEndPoints {
     private UserQueries userQueries;
 
     @Autowired
-    public UserEndPoints(UserQueries userQ){
+    public UserEndPoints(UserQueries userQ ){
         this.userQueries = userQ;
     }
 
@@ -33,25 +34,36 @@ public class UserEndPoints {
 
     @GetMapping("{userID}/followers")
     public ResponseEntity getFollowers(@PathVariable("userID") String userId){
-        //ArrayList followers = this.userQueries.getFollowers(userId);
         List followers = this.userQueries.getFollowersOrFollowing(userId,"followers");
         return ResponseEntity.status(200).body(followers);
     }
 
     @GetMapping("{userID}/following")
-    public ResponseEntity getFollowing(@PathVariable("userID") String userId){
+    public ResponseEntity<List> getFollowing(@PathVariable("userID") String userId){
         List following = this.userQueries.getFollowersOrFollowing(userId,"following");
         return ResponseEntity.status(200).body(following);
     }
 
 
-    @PostMapping("{userID}/{otherUser}/follow")
-    public void followOtherUser(@PathVariable("userID") String userId,@PathVariable("otherUser") String otherUser){
-
+    @PutMapping("{userID}/{otherUser}/follow")
+    public ResponseEntity<String> followOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
+        boolean success = this.userQueries.followUser(userId,otherUser);
+        if(success==true){
+            return ResponseEntity.status(200).body("successfully followed user");
+        }
+        else{
+            return ResponseEntity.status(400).body("could not follow user");
+        }
     }
 
-    @PostMapping("{userID}/{otherUser}/unfollow")
-    public void unfollowOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
-
+    @PutMapping("{userID}/{otherUser}/unfollow")
+    public ResponseEntity unfollowOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
+        boolean success = this.userQueries.unfollowUser(userId,otherUser);
+        if(success==true){
+            return ResponseEntity.status(200).body("successfully unfollowed user");
+        }
+        else{
+            return ResponseEntity.status(400).body("could not complete action");
+        }
     }
 }

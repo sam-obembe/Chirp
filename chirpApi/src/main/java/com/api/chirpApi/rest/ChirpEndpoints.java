@@ -13,8 +13,8 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("chirp")
 public class ChirpEndpoints {
-    ChirpQueries chirpQueries;
-    UserQueries userQueries;
+    private ChirpQueries chirpQueries;
+    private UserQueries userQueries;
 
     @Autowired
     public ChirpEndpoints(ChirpQueries chirpQ, UserQueries userQ) {
@@ -26,8 +26,14 @@ public class ChirpEndpoints {
     public ResponseEntity postChirp(@RequestBody Chirp chirpData) {
         boolean chirpAdded = this.chirpQueries.addChirp(chirpData);
         if (chirpAdded == true) {
-            return ResponseEntity.status(200).body(chirpData);
-        } else {
+            boolean updateUser = this.userQueries.addChirpIdToList(chirpData.getChirpId(), chirpData.getUserId());
+            if(updateUser == true){
+                return ResponseEntity.status(200).body(chirpData);
+            }
+            else{return ResponseEntity.status(400).body("could not update user");}
+
+        }
+        else {
             return ResponseEntity.status(400).body("unable to add chirp");
         }
     }
@@ -38,10 +44,16 @@ public class ChirpEndpoints {
         return ResponseEntity.status(200).body(foundChirp);
     }
 
-    @GetMapping("{userId}/feed")
-    public ResponseEntity getNewsFeed(@PathVariable String userId){
-        List following = this.userQueries.getFollowersOrFollowing(userId,"following");
-        this.chirpQueries.getChirpsFromFollowing(following);
-        return ResponseEntity.status(200).body("feed");
+
+    @GetMapping("{userId}/chirps")
+    public ResponseEntity getAllChirpsByUser(@PathVariable String userId){
+        List chirps = this.chirpQueries.getAllChirpsByUser(userId);
+        return ResponseEntity.status(200).body(chirps);
+    }
+
+    @GetMapping("{userId}/chirps/following")
+    public ResponseEntity getChirpsFromFollowing(@PathVariable("userId") String userId){
+        List chirps = this.chirpQueries.getChirpsFromFollowing(userId);
+        return ResponseEntity.status(200).body(chirps);
     }
 }

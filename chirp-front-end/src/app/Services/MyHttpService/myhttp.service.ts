@@ -27,4 +27,12 @@ export class MyhttpService {
   postChirp(chirp:Chirp){
     return this.http.post(`${this.domain}/chirp`,chirp)
   }
+
+  getChirpsForFeed(userId:string){
+    return this.http.get(`${this.domain}/chirp/${userId}/chirps/following`)
+  }
+
+  getChirpsByUser(userId:string){
+    return this.http.get(`${this.domain}/chirp/${userId}/chirps`)
+  }
 }

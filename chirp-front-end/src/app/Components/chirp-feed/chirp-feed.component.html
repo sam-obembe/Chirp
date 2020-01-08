@@ -1,1 +1,5 @@
-<p>chirp-feed works!</p>
+
+<div *ngFor="let chirp of chirpFeed">
+    <app-chirp-tile [chirpData]="chirp"></app-chirp-tile>
+   <!-- <p>{{chirp.chirp}}</p>-->
+</div>
