@@ -10,17 +10,17 @@ import { MyhttpService } from '../MyHttpService/myhttp.service';
 })
 export class InteractionsService {
 
-  private searchResults = new Subject<[]>();
+  private searchResults = new Subject<{users,chirps}>();
   private chirpFeed = new Subject<Chirp[]>();
   private searchResultsObservable = this.searchResults.asObservable() ;
   private chirpFeedObservable = this.chirpFeed.asObservable();
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService) { }
 
-  getSearchResults():Observable<[]> {
+  getSearchResults():Observable<{users,chirps}> {
     return this.searchResultsObservable;
   }
 
-  setSearchResults(results:[]):void{
+  setSearchResults(results:{users,chirps}):void{
    this.searchResults.next(results);
   }
 

@@ -28,6 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { SearchPageComponent } from './Pages/search-page/search-page.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list'
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,9 @@ import { SearchPageComponent } from './Pages/search-page/search-page.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule,
+    MatListModule
   ],
   providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard,InteractionsService],
   bootstrap: [AppComponent]

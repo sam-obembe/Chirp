@@ -1,1 +1,30 @@
-<p>search-page works!</p>
+<div class="searchPageMain">
+  <app-side-nav (signout)="signOut($event)"></app-side-nav>
+  <div>
+  <mat-tab-group>
+
+    <mat-tab label="Users">
+      <mat-list *ngFor = "let user of userResults" role="list">
+        <mat-list-item>{{user.userName}}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-tab> 
+
+    <mat-tab label="Chirps">
+      <div *ngIf="chirpResults.length>0">
+
+        <mat-list *ngFor="let chirp of chirpResults">
+          
+          <app-chirp-tile [chirpData]="chirp"></app-chirp-tile>
+          
+          <mat-divider></mat-divider>
+        </mat-list>
+  
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+  </div>
+
+</div>

@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'signup',component:SignupPageComponent},
   {path:'home',component:HomePageComponent},
   {path:'profile',component:ProfilePageComponent},
-  {path:'search',component:SearchPageComponent}
+  {path:'search/:searchString',component:SearchPageComponent}
   /*{path:'home',component:HomePageComponent,canActivate:[AuthGuard]}*/
 ];
 
