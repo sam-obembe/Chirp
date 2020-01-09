@@ -39,4 +39,16 @@ export class InteractionsService {
     this.chirpFeed.next(chirps);
   }
 
+  checkIfFollowing(userId:string):boolean{
+    let currentLoggedInUser = this.authService.getUserData()
+    let exists = currentLoggedInUser.following.includes(userId);
+    return exists;
+  }
+
+  checkIfFollower(userId:string):boolean{
+    let currentLoggedInUser = this.authService.getUserData()
+    let exists = currentLoggedInUser.followers.includes(userId);
+    return exists;
+  }
+
 }

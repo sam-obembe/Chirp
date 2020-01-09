@@ -25,12 +25,10 @@ export class SearchPageComponent implements OnInit {
     })
     
     this.interactions.getSearchResults().subscribe(searchResults=>{
-      //console.log(results);
-      this.userResults=searchResults.users;
+      let currentUser = this.auth.getUserData();
+      this.userResults=searchResults.users.filter(user=>user.userId!==currentUser.userId)
+      //this.userResults=searchResults.users;
       this.chirpResults = searchResults.chirps;
-
-      console.log(this.chirpResults);
-      console.log(this.userResults);
     })
    }
 

@@ -15,7 +15,6 @@ export class LandingComponent implements OnInit {
   ngOnInit() { }
 
   onLogin(credentials:LoginDetails){
-    console.log(credentials)
     this.authService.login(credentials.email,credentials.password).then(loggedInCredentials=>{
       let uid= loggedInCredentials.user.uid;
       this.myHttp.loginUser(uid).subscribe(data=>{

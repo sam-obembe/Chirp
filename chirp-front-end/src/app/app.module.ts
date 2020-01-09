@@ -29,7 +29,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { SearchPageComponent } from './Pages/search-page/search-page.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { UserTileComponent } from './Components/user-tile/user-tile.component';
+import { ProfileHeaderComponent } from './Components/profile-header/profile-header.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import {MatListModule} from '@angular/material/list'
     SearchboxComponent,
     ChirpTileComponent,
     ProfilePageComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    UserTileComponent,
+    ProfileHeaderComponent
   ],
   imports: [
     BrowserModule,

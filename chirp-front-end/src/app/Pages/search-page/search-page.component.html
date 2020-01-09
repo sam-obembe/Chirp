@@ -5,7 +5,7 @@
 
     <mat-tab label="Users">
       <mat-list *ngFor = "let user of userResults" role="list">
-        <mat-list-item>{{user.userName}}</mat-list-item>
+        <app-user-tile [userData]="user"></app-user-tile>
         <mat-divider></mat-divider>
       </mat-list>
     </mat-tab> 

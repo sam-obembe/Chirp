@@ -1,7 +1,7 @@
 export interface AuthenticatedUserDetails {
   chirps:[],
-  followers:[],
-  following:[],
+  followers:string[],
+  following:string[],
   likedChirps:[],
   profilePicture:string,
   userId:string,

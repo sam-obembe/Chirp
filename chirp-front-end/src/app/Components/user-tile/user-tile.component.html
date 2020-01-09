@@ -1,0 +1,11 @@
+<mat-card>
+    <img mat-card-avater [src]="getProfilePicture()" alt="profile picture" class="userTileAvatar"/>
+  
+    <mat-card-content class="tileContent">
+        <h2 style="display:inline">{{userData.userName}}</h2>
+        <p *ngIf="followsYou===true">Follows You</p>
+    </mat-card-content>
+    <mat-card-actions class="tileActions">
+        <button mat-raised-button>{{buttonText}}</button>
+    </mat-card-actions>
+</mat-card>

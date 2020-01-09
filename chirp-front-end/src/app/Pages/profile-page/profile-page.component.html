@@ -2,6 +2,7 @@
     <app-side-nav (signout)="signOut($event)"></app-side-nav>
 
     <div class="chirpSection">
+        <app-profile-header [userDetails]="userData"></app-profile-header>
         <div>
             <p class="chirpBoxTopLabel">{{userData.userName}}</p>
         </div>

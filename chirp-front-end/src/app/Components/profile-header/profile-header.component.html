@@ -1,0 +1,10 @@
+<mat-card>
+    <div>
+        <img [src]="getProfilePicture()" alt="profile picture"/>
+    </div>
+    <mat-card-content>
+        <h2>{{userDetails.userName}}</h2>
+        <p class="count">{{userDetails.followers.length}} Followers</p>
+        <p class="count">{{userDetails.following.length}} Following</p>
+    </mat-card-content>
+</mat-card>

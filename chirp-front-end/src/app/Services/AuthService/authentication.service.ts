@@ -21,7 +21,6 @@ export class AuthenticationService {
 
   setUserData(data){
     this.userData = data;
-    console.log(this.userData);
   }
 
   login(email:string,password:string){
@@ -34,14 +33,11 @@ export class AuthenticationService {
 
   checkLoggedIn(){
     this.firebase.auth().onAuthStateChanged(user=>{
-      console.log(user);
       if(user!=undefined){
         this.isAuthenticated=true;
-        console.log(this.isAuthenticated);
       }
       else{
         this.isAuthenticated=false;
-        console.log(this.isAuthenticated);
       }
     })
     

@@ -1,0 +1,17 @@
+.userTileAvatar{
+    display:inline-block;
+    width:50px;
+    border:1px solid grey;
+    border-radius:100%
+}
+
+.tileContent{
+    width:60%;
+    display: inline-block;
+    margin-left:5%
+}
+
+.tileActions{
+    display:inline;
+    margin-left:5%
+}
