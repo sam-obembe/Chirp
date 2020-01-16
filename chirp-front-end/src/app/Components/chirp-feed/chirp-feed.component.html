@@ -1,5 +1,5 @@
 
 <div *ngFor="let chirp of chirpFeed">
-    <app-chirp-tile [chirpData]="chirp"></app-chirp-tile>
+    <app-chirp-tile [chirpData]="chirp.chirpData" [chirpPoster]="chirp.postedBy"></app-chirp-tile>
    <!-- <p>{{chirp.chirp}}</p>-->
 </div>

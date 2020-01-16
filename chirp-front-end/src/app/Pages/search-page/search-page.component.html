@@ -12,14 +12,7 @@
 
     <mat-tab label="Chirps">
       <div *ngIf="chirpResults.length>0">
-
-        <mat-list *ngFor="let chirp of chirpResults">
-          
-          <app-chirp-tile [chirpData]="chirp"></app-chirp-tile>
-          
-          <mat-divider></mat-divider>
-        </mat-list>
-  
+        <app-chirp-feed [chirps]="chirpResults"></app-chirp-feed>
       </div>
     </mat-tab>
 

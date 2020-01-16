@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Document(collection="user")
@@ -88,5 +89,12 @@ public class UserData {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public HashMap<String,String> cleanUserDetails(){
+        HashMap<String,String> userHash = new HashMap<>();
+        userHash.put("userName",this.userName);
+        userHash.put("profilePicture",this.profilePicture);
+        return userHash;
     }
 }

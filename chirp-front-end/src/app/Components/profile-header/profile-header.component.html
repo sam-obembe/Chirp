@@ -4,7 +4,15 @@
     </div>
     <mat-card-content>
         <h2>{{userDetails.userName}}</h2>
-        <p class="count">{{userDetails.followers.length}} Followers</p>
-        <p class="count">{{userDetails.following.length}} Following</p>
+        <mat-chip-list>
+            <a routerLink="/profile/followers">
+                <mat-chip >{{userDetails.followers.length}} Followers</mat-chip>
+            </a>
+            <a routerLink="/profile/following">
+                <mat-chip >{{userDetails.following.length}} Following</mat-chip>
+            </a>
+            
+            
+        </mat-chip-list>
     </mat-card-content>
 </mat-card>

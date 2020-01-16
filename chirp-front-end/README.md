@@ -41,8 +41,6 @@ export default firebaseConfig;
 ## Types
 * Location: *src/app/Models*
 ### AuthenticatedUserDetails
-
-**Fields:**
 * chirps, type:[]
 * followers, type : string[]
 * following, type :string[],
@@ -53,7 +51,6 @@ export default firebaseConfig;
 
 
 ### Chirp
-**Fields:**
 * userId, type :string,
 * chirp, type :string,
 * imgUrls, type :string[],
@@ -80,32 +77,32 @@ Provides functionality for signing up, login in ,checking authentication and get
 * isAuthenticated, type: boolean
 
 **Methods**:
-* singup(email,password)
-* setUserData()
-* login(email,password)
-* getUserData()
-* checkLoggedIn()
-* getIsAuthenticated():boolean
-* logout()
+* `singup(email,password)`
+* `setUserData()`
+* `login(email,password)`
+* `getUserData()`
+* `checkLoggedIn()`
+* `getIsAuthenticated():boolean`
+* `logout()`
 
 ### 2. **FirebaseConfigService**
 Initializes firebase using the configuration in firebaseConfig.js .
 **Fields**:
-* firebase
-* firebaseConfig
+* `firebase`
+* `firebaseConfig`
 
 **Methods**
-* getConfig()
-* getFirebase()
+* `getConfig()`
+* `getFirebase()`
 
 
 ### 3 .**Interactions Service**
 **Other Services Injected**: AuthenticationService, MyHttpService
 **Fields**
-* searchResults ; initialised as a Subject
-* chirpFeed ; initalised as a Subject
-* searchResultsObservable: exposes searchResults as an observable
-* chirpFeedObservable: exposes chirpFeed as an observable
+* `searchResults` ; initialised as a Subject
+* `chirpFeed` ; initalised as a Subject
+* `searchResultsObservable`: exposes searchResults as an observable
+* `chirpFeedObservable`: exposes chirpFeed as an observable
 
 **Methods**
 * `getSearchResults():Observable` ; returns `searchResultsObservable`
@@ -135,7 +132,7 @@ Initializes firebase using the configuration in firebaseConfig.js .
 
 **Services Injected**: InteractionsService
 **Fields**
-* chirpBox : A formControl which accepts user input
+* `chirpBox` : A formControl which accepts user input
 
 **Methods**
 * `postChirp()`: passes the user input to `InteractionsService.postChipr(chirp)` and resets the input field. 
@@ -143,13 +140,13 @@ Initializes firebase using the configuration in firebaseConfig.js .
 
 ### 2. **Chirp feed**
 **Inputs**
-* chirps : accepts an array of chirps as an input and passes that to the chirpFeed field. 
+* `chirps` : accepts an array of chirps as an input and passes that to the chirpFeed field. 
 
 
 ### 3. **Chirp tile**
 **Inputs**
-* chirpData: accepts chirp data and stores it in the "chirp" field. 
-
+* `chirpData`: accepts chirp data and stores it in the `chirp` field. 
+* `chirpPoster`: accepts data on the user that posted the chirp and stores it in the `poster` field. 
 ### 4. **Login form**
 **Outputs**
 * loginCredentials: 

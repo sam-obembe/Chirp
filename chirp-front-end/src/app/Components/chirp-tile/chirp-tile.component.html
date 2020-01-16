@@ -1,5 +1,9 @@
 
 <mat-card>
+    <mat-card-header>
+        <mat-card-title>{{poster.userName}}</mat-card-title>
+        <img mat-card-avatar [src]="poster.profilePicture||dummyPic">
+    </mat-card-header>
     <mat-card-content>
         <p>{{chirp.chirp}}</p>
     </mat-card-content>

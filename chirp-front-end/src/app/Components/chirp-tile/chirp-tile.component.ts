@@ -8,6 +8,8 @@ import { Chirp } from 'src/app/Models/chirp';
 })
 export class ChirpTileComponent implements OnInit {
   @Input('chirpData') chirp:Chirp
+  @Input('chirpPoster') poster;
+  dummyPic = "https://robohash.org/chirp"
   constructor() { }
 
   ngOnInit() {

@@ -22,7 +22,7 @@ export class ProfilePageComponent implements OnInit {
     this.myHttp.getChirpsByUser(this.userData.userId).subscribe(chirps=>{
       this.interactions.setFeed(chirps)
     })
-    this.interactions.getFeed().subscribe(chirps=>this.userChirps=chirps);
+    this.interactions.getFeed().subscribe(chirps=>this.setUserChirps(chirps));
   }
 
   signOut(e){
@@ -36,6 +36,10 @@ export class ProfilePageComponent implements OnInit {
 
   getUserId(){
     return this.userData.userId;
+  }
+
+  setUserChirps(chirps:[]){
+    this.userChirps=chirps
   }
 
 }

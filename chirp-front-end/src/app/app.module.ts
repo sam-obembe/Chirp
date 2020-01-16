@@ -30,8 +30,10 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
 import { SearchPageComponent } from './Pages/search-page/search-page.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips'
 import { UserTileComponent } from './Components/user-tile/user-tile.component';
-import { ProfileHeaderComponent } from './Components/profile-header/profile-header.component'
+import { ProfileHeaderComponent } from './Components/profile-header/profile-header.component';
+import { FollowersFollowingPageComponent } from './Pages/followers-following-page/followers-following-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { ProfileHeaderComponent } from './Components/profile-header/profile-head
     ProfilePageComponent,
     SearchPageComponent,
     UserTileComponent,
-    ProfileHeaderComponent
+    ProfileHeaderComponent,
+    FollowersFollowingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { ProfileHeaderComponent } from './Components/profile-header/profile-head
     MatIconModule,
     MatDividerModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ],
   providers: [FirebaseConfigService,AuthenticationService,MyhttpService,AuthGuard,InteractionsService],
   bootstrap: [AppComponent]

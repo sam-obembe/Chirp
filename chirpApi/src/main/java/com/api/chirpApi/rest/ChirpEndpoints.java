@@ -1,12 +1,16 @@
 package com.api.chirpApi.rest;
 
+import com.api.chirpApi.MyMethods;
 import com.api.chirpApi.dao.ChirpQueries;
 import com.api.chirpApi.dao.UserQueries;
 import com.api.chirpApi.model.Chirp;
+import com.api.chirpApi.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -48,12 +52,27 @@ public class ChirpEndpoints {
     @GetMapping("{userId}/chirps")
     public ResponseEntity getAllChirpsByUser(@PathVariable String userId){
         List chirps = this.chirpQueries.getAllChirpsByUser(userId);
-        return ResponseEntity.status(200).body(chirps);
+        UserData userDetails = this.userQueries.getUserById(userId);
+        List chirpsToSend = new ArrayList();
+        chirps.forEach(chirp->{
+            Chirp castedChirp =(Chirp) chirp;
+            HashMap chirpAndUser = MyMethods.chirpBuilder(castedChirp,userDetails);
+            chirpsToSend.add(chirpAndUser);
+        });
+        return ResponseEntity.status(200).body(chirpsToSend);
     }
 
     @GetMapping("{userId}/chirps/following")
     public ResponseEntity getChirpsFromFollowing(@PathVariable("userId") String userId){
         List chirps = this.chirpQueries.getChirpsFromFollowing(userId);
-        return ResponseEntity.status(200).body(chirps);
+
+        List chirpsToSend = new ArrayList();
+        chirps.forEach(chirp->{
+            Chirp casted = (Chirp) chirp;
+            UserData userDetails = this.userQueries.getUserById(casted.getUserId());
+            HashMap chirpAndUser = MyMethods.chirpBuilder(casted,userDetails);
+            chirpsToSend.add(chirpAndUser);
+        });
+        return ResponseEntity.status(200).body(chirpsToSend);
     }
 }
