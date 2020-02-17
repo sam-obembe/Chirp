@@ -1,0 +1,11 @@
+.followersPageMain{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
+  border: 1px solid red;
+}
+
+.followersFollowingSection{
+  border-left:1px solid grey;
+  border-right: 1px solid grey;
+}

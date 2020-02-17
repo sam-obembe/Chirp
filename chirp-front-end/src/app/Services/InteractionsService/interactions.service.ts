@@ -14,6 +14,9 @@ export class InteractionsService {
   private chirpFeed = new Subject<Chirp[]>();
   private searchResultsObservable = this.searchResults.asObservable() ;
   private chirpFeedObservable = this.chirpFeed.asObservable();
+  private followers =new Subject<[]>();
+  private followersObservable = this.followers.asObservable();
+
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService) { }
 
   getSearchResults():Observable<{users,chirps}> {
@@ -49,6 +52,14 @@ export class InteractionsService {
     let currentLoggedInUser = this.authService.getUserData()
     let exists = currentLoggedInUser.followers.includes(userId);
     return exists;
+  }
+
+  setFollowers(followers:[]){
+    this.followers.next(followers)
+  }
+
+  getFollowers(){
+    return this.followersObservable;
   }
 
 }

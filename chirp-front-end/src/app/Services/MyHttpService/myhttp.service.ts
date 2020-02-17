@@ -35,4 +35,8 @@ export class MyhttpService {
   getChirpsByUser(userId:string){
     return this.http.get(`${this.domain}/chirp/${userId}/chirps`)
   }
+
+  getFollowers(userId:string){
+    return this.http.get(`${this.domain}/users/${userId}/followers`)
+  }
 }

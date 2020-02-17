@@ -1,6 +1,9 @@
-<div>
+<div class="followersPageMain">
     <app-side-nav (signout)="signOut($event)"></app-side-nav>
-    <div class="chirpSection">
-
+    <div class="followersFollowingSection">
+        <mat-tab-group>
+            <mat-tab label="Followers">Show list of following here</mat-tab>
+            <mat-tab label="Following">Show list of followers here</mat-tab>
+        </mat-tab-group>
     </div>
 </div>
