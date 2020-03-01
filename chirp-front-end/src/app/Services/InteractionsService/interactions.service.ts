@@ -15,7 +15,10 @@ export class InteractionsService {
   private searchResultsObservable = this.searchResults.asObservable() ;
   private chirpFeedObservable = this.chirpFeed.asObservable();
   private followers =new Subject<[]>();
-  private followersObservable = this.followers.asObservable();
+  private followers$ = this.followers.asObservable();
+
+  private following = new Subject<[]>();
+  private following$ = this.following.asObservable();
 
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService) { }
 
@@ -59,7 +62,15 @@ export class InteractionsService {
   }
 
   getFollowers(){
-    return this.followersObservable;
+    return this.followers$;
+  }
+
+  getFollowing(){
+    return this.following$;
+  }
+
+  setFollowing(following:[]){
+    this.following.next(following);
   }
 
 }

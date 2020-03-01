@@ -28,6 +28,7 @@ export class AuthenticationService {
   }
 
   getUserData():AuthenticatedUserDetails{
+    console.log(this.userData);
     return this.userData;
   }
 

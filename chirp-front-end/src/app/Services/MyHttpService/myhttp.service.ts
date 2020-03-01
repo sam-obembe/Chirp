@@ -39,4 +39,8 @@ export class MyhttpService {
   getFollowers(userId:string){
     return this.http.get(`${this.domain}/users/${userId}/followers`)
   }
+
+  getFollowing(userId:string){
+    return this.http.get(`${this.domain}/users/${userId}/following`)
+  }
 }

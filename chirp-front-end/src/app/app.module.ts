@@ -33,7 +33,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips'
 import { UserTileComponent } from './Components/user-tile/user-tile.component';
 import { ProfileHeaderComponent } from './Components/profile-header/profile-header.component';
-import { FollowersFollowingPageComponent } from './Pages/followers-following-page/followers-following-page.component'
+import { FollowersFollowingPageComponent } from './Pages/followers-following-page/followers-following-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,7 @@ import { FollowersFollowingPageComponent } from './Pages/followers-following-pag
     SearchPageComponent,
     UserTileComponent,
     ProfileHeaderComponent,
-    FollowersFollowingPageComponent
+    FollowersFollowingPageComponent,
   ],
   imports: [
     BrowserModule,

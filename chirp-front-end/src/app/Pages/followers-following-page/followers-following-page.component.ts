@@ -12,6 +12,9 @@ import { AuthenticatedUserDetails } from 'src/app/Models/authenticated-user-deta
 })
 export class FollowersFollowingPageComponent implements OnInit {
 
+  private followers:[];
+  private following:[] 
+
   constructor(private authService:AuthenticationService,private myHttp:MyhttpService, private interactions:InteractionsService, private route:Router) { }
 
   ngOnInit() {
@@ -22,6 +25,16 @@ export class FollowersFollowingPageComponent implements OnInit {
     })
     this.interactions.getFollowers().subscribe(followers=>{
       console.log(followers)
+      this.followers = followers;
+    })
+
+    this.myHttp.getFollowing(userDetails.userId).subscribe((following:[])=>{
+      this.interactions.setFollowing(following);
+    })
+
+    this.interactions.getFollowing().subscribe(following=>{
+      console.log(following)
+      this.following = following;
     })
   }
 

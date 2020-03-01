@@ -5,12 +5,11 @@
     <mat-card-content>
         <h2>{{userDetails.userName}}</h2>
         <mat-chip-list>
-            <a routerLink="/profile/followers">
-                <mat-chip >{{userDetails.followers.length}} Followers</mat-chip>
-            </a>
-            <a routerLink="/profile/following">
-                <mat-chip >{{userDetails.following.length}} Following</mat-chip>
-            </a>
+            
+            <mat-chip routerLink="/profile/followers">{{userDetails.followers.length}} Followers</mat-chip>
+          
+           
+            <mat-chip routerLink="/profile/following">{{userDetails.following.length}} Following</mat-chip>
             
             
         </mat-chip-list>
