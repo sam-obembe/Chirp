@@ -6,6 +6,6 @@
         <p *ngIf="followsYou===true">Follows You</p>
     </mat-card-content>
     <mat-card-actions class="tileActions">
-        <button mat-raised-button>{{buttonText}}</button>
+        <button mat-raised-button (click)="followUser()">{{buttonText}}</button>
     </mat-card-actions>
 </mat-card>

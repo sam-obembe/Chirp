@@ -46,13 +46,13 @@ public class UserEndPoints {
 
 
     @PutMapping("{userID}/{otherUser}/follow")
-    public ResponseEntity<String> followOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
+    public ResponseEntity followOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
         boolean success = this.userQueries.followUser(userId,otherUser);
         if(success==true){
-            return ResponseEntity.status(200).body("successfully followed user");
+            return ResponseEntity.status(200).body(true);
         }
         else{
-            return ResponseEntity.status(400).body("could not follow user");
+            return ResponseEntity.status(400).body(false);
         }
     }
 
@@ -60,10 +60,10 @@ public class UserEndPoints {
     public ResponseEntity unfollowOtherUser(@PathVariable("userID") String userId, @PathVariable("otherUser") String otherUser){
         boolean success = this.userQueries.unfollowUser(userId,otherUser);
         if(success==true){
-            return ResponseEntity.status(200).body("successfully unfollowed user");
+            return ResponseEntity.status(200).body(success);
         }
         else{
-            return ResponseEntity.status(400).body("could not complete action");
+            return ResponseEntity.status(400).body(false);
         }
     }
 }

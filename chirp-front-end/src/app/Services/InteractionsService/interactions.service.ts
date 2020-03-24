@@ -73,4 +73,8 @@ export class InteractionsService {
     this.following.next(following);
   }
 
+  followUser(userId:string,otherUserId:string):Observable<any>{
+    return this.myHttp.followUser(userId,otherUserId);
+  }
+
 }

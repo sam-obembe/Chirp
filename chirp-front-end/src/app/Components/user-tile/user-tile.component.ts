@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InteractionsService } from 'src/app/Services/InteractionsService/interactions.service';
+import { AuthenticationService } from 'src/app/Services/AuthService/authentication.service';
 
 @Component({
   selector: 'app-user-tile',
@@ -11,7 +12,7 @@ export class UserTileComponent implements OnInit {
   dummyAvatar:string = "https://robohash.org/chirp";
   buttonText;
   followsYou
-  constructor(private interaction:InteractionsService) { 
+  constructor(private interaction:InteractionsService, private auth:AuthenticationService) { 
     console.log(this.userData);
     
   }
@@ -33,6 +34,10 @@ export class UserTileComponent implements OnInit {
     return this.interaction.checkIfFollower(this.userData.userId)
   }
 
+  followUser(){
+    let myUserId = this.auth.getUserData().userId;
+    return this.interaction.followUser(myUserId,this.userData.userId).subscribe(data=>{console.log(data)});
+  }
 
 
 }

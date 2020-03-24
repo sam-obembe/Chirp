@@ -43,4 +43,8 @@ export class MyhttpService {
   getFollowing(userId:string){
     return this.http.get(`${this.domain}/users/${userId}/following`)
   }
+
+  followUser(userId:string, otherUserId:string){
+    return this.http.put(`${this.domain}/users/${userId}/${otherUserId}/follow`)
+  }
 }
