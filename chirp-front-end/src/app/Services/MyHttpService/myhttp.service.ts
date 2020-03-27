@@ -47,4 +47,8 @@ export class MyhttpService {
   followUser(userId:string, otherUserId:string){
     return this.http.put(`${this.domain}/users/${userId}/${otherUserId}/follow`)
   }
+
+  likeChirp(userId:string, chirpId:string){
+    return this.http.put(`${this.domain}/chirp/${chirpId}/${userId}/like`)
+  }
 }

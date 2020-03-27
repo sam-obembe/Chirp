@@ -5,6 +5,8 @@ import com.api.chirpApi.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -67,5 +69,12 @@ public class ChirpQueries {
 
         List chirps = this.mongoOps.find(query(where("userId").in(following)),Chirp.class);
         return chirps;
+    }
+
+    public boolean likeChirp(String userId, String chirpId){
+        Chirp toLike = this.getChirpById(chirpId);
+        this.mongoOps.updateFirst(query(where("_id").is(chirpId)),new Update().push("likers",userId),Chirp.class);
+        //toLike.addLiker(userId);
+        return true;
     }
 }

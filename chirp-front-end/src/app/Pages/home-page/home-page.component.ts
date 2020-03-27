@@ -19,6 +19,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.userData = this.authService.getUserData();
     this.myHttp.getChirpsForFeed(this.userData.userId).subscribe(data=>{
+      //console.log(data);
       this.interactions.setFeed(data);
     })
     this.interactions.getFeed().subscribe(feed=>this.chirpFeed=feed);

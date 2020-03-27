@@ -33,7 +33,7 @@ export class InteractionsService {
   postChirp(chirp:string):void{
     let uid = this.authService.getUserData().userId;
     let post:Chirp = {userId:uid,chirp, replying:"",imgUrls:[""]}
-    console.log(post);
+    //console.log(post);
     this.myHttp.postChirp(post).subscribe(data=>console.log(data))
   }
 
@@ -77,4 +77,8 @@ export class InteractionsService {
     return this.myHttp.followUser(userId,otherUserId);
   }
 
+  likeChirp(chirpId:string):Observable<any>{
+    let userId = this.authService.getUserData().userId;
+    return this.myHttp.likeChirp(userId,chirpId);
+  }
 }

@@ -71,4 +71,9 @@ public class Chirp {
         return replyingTo;
     }
 
+    public boolean addLiker(String userId){
+        this.likers.add(userId);
+        return true;
+    }
+
 }

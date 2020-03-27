@@ -75,4 +75,11 @@ public class ChirpEndpoints {
         });
         return ResponseEntity.status(200).body(chirpsToSend);
     }
+
+    @PutMapping("{chirpId}/{userId}/like")
+    public ResponseEntity likeChirp(@PathVariable("userId") String userId, @PathVariable("chirpId") String chirpId){
+        this.chirpQueries.likeChirp(userId,chirpId);
+        return ResponseEntity.status(200).body(true);
+    }
+
 }
